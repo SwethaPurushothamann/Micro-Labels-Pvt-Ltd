@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gold Products - Micro Labels Pvt Ltd</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+      color: #333;
+      line-height: 1.6;
+      transition: all 0.3s ease;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      background: #fff;
+      padding: 15px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-container img {
+      height: 50px;
+      transition: 0.3s ease;
+    }
+
+    .company-name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #252222;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: rgb(232, 120, 64);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #252222;
+    }
+
+    main {
+      padding: 60px 5%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #252222;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    p {
+      margin-bottom: 16px;
+    }
+
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .product-card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 15px;
+    }
+
+    .product-info h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      color: rgb(232, 120, 64);
+    }
+
+    .product-info p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    footer {
+      background: rgb(232, 120, 64);
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+    }
+
+    /* Responsive - Tablet */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        right: -250px;
+        height: 100%;
+        width: 250px;
+        background: #fff;
+        box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+        transition: right 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        padding-top: 80px;
+        z-index: 9;
+      }
+
+      nav.open {
+        right: 0;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 20px;
+        padding-left: 0;
+        margin: 0;
+      }
+
+      nav ul li {
+        text-align: center;
+      }
+
+      main {
+        padding: 50px 5%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 10px 3%;
+      }
+
+      .logo-container img {
+        height: 40px;
+      }
+
+      .company-name {
+        font-size: 1.2rem;
+      }
+
+      h1 {
+        font-size: 1.4rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+
+      nav {
+        width: 200px;
+      }
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 8;
+      transition: opacity 0.3s ease;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    /* -------- Image Modal -------- */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 50px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 95%;
+      max-height: 90%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .close:hover {
+      color: #bbb;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="./logo.jpg" alt="Micro Labels Logo">
+      <span class="company-name">Micro Labels Pvt Ltd</span>
+    </div>
+    <i class="fas fa-bars menu-toggle"></i>
+    <nav>
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./Products.html">Products</a></li>
+        <li><a href="./Gallery.html">Gallery</a></li>
+        <li><a href="./Contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="overlay"></div>
+
+  <main>
+    <h1>Gold Products</h1>
+    <p>We are manufacturers serving both <strong>Domestic </strong> and <strong>International customers </strong> with fully customized packaging for gold coins and bars. Our expertise includes crafting coin cards in a wide range of sizes - from small commemorative tokens to large bullion pieces - and in diverse shapes such as round, oval, rectangular, and uniquely contoured designs. Each product is tailored to meet client specifications, ensuring premium quality, precision detailing, high security feature and lasting value with anti-contour fitting.</p>
+
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="./GOLDCARDS IMAGES/oxfordmint.jpg" alt="Oxfordmint">
+        <div class="product-info">
+          <p>Showcasing bold presence with larger dimensions, enhanced by intricate fine-line printing for a refined premium look.</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./GOLDCARDS IMAGES/royalmint.jpg" alt="Royal Mint">
+        <div class="product-info">
+          <p>Premium packaging with fine-line detailing for a sleek, secure, and elegant finish.</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./GOLDCARDS IMAGES/missgold.jpg" alt="Missgold">
+        <div class="product-info">
+          <p>Exclusive Gradient-effect printing brings out a premium shine, matching the elegance of the gold bar and making it a truly collectible piece.</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./GOLDCARDS IMAGES/royal mint.jpg" alt="Royalmint">
+        <div class="product-info">
+          <p>Featuring advanced multicolor digital printing, this coin card showcases rich tones and fine detailing, turning secure packaging into a vibrant display piece.</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./GOLDCARDS IMAGES/emirates minting.jpg" alt="Emirates Minting">
+        <div class="product-info">
+          <p>Specially designed to hold pendant-style coins with hooks, these security cases ensure both safety and elegant presentation. Custom sizes and layouts available.</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./GOLDCARDS IMAGES/aletihad.jpg" alt="Aletihad">
+        <div class="product-info">
+          <p>Showcase your 100g products in a bold, premium card design with customizable large dimensions.</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./GOLDCARDS IMAGES/dubai duty free.jpg" alt="Dubaidutyfree">
+        <div class="product-info">
+          <p>Premium multicolor digital printing delivers vibrant, detailed packaging that highlights brand identity while ensuring product security.</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./GOLDCARDS IMAGES/dmcc.jpg" alt="DMCC">
+        <div class="product-info">
+          <p>With precision gold foil detailing, this eagle design reflects luxury, exclusivity, and timeless value.</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./GOLDCARDS IMAGES/mmtc pamp.jpg" alt="Mmtc">
+        <div class="product-info">
+          <p>Custom cavity design to fit unique shapes like shells, combining creative freedom with secure protection.</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./GOLDCARDS IMAGES/global india.jpg" alt="Globalindia">
+        <div class="product-info">
+          <p>With high-precision multicolor digital printing, this rectangular coin card offers sharp designs and vibrant finishes, enhancing the presentation of rectangular-shaped coins.</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./GOLDCARDS IMAGES/swiss.jpg" alt="Swiss">
+        <div class="product-info">
+          <p>Minimal yet sophisticated - engineered to highlight the round brilliance of coins.</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./GOLDCARDS IMAGES/goldera.jpg" alt="Goldera">
+        <div class="product-info">
+          <p>Compact and precise packaging tailored for ultra-small coins below 1g, maintaining both elegance and secure sealing.</p>
+        </div>
+      </div>
+
+       <div class="product-card">
+        <img src="./GOLDCARDS IMAGES/sam.jpg" alt="Sam">
+        <div class="product-info">
+          <p>Professional finish where digital print meets bullion accuracy in compact form.</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./GOLDCARDS IMAGES/parker.jpg" alt="Parker">
+        <div class="product-info">
+          <p>Ideal for gifting, this card combines bold multicolor printing with a clear rectangular cutout.</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./GOLDCARDS IMAGES/malabar.jpg" alt="Malabar">
+        <div class="product-info">
+          <p>Secure and elegant - crafted for standardized round coin placements.</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./GOLDCARDS IMAGES/malabar 1.jpg" alt="malabar">
+        <div class="product-info">
+          <p>Custom die-cut design ensuring perfect pendant dimensions for display and protection.</p>
+        </div>
+      </div>
+     
+      <div class="product-card">
+        <img src="./GOLDCARDS IMAGES/tanishq.jpg" alt="Tanishq">
+        <div class="product-info">
+          <p>Combines structured printing with accurate round cut sizing for reliable presentation.</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <video 
+          muted 
+          controls 
+          controlsList="nodownload" 
+          width="100%" 
+          height="auto" 
+          poster="./GOLDCARDS IMAGES/tani.jpg"
+        >
+        <source src="./GOLDCARDS IMAGES/tanishq final.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      <div class="product-info">
+        <p>This video demonstrates the tamper-evident design. Notice how any attempt to open or break the seal becomes immediately visible - providing a clear indication if the packaging has been tampered with. This built-in security feature ensures authenticity and customer confidence.</p>
+      </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./GOLDCARDS IMAGES/muthoot.jpg" alt="muthoot">
+        <div class="product-info">
+          <p>Designed for small-dimension coins, with sharp printing and a strong retail presence.</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./GOLDCARDS IMAGES/aurastar.jpg" alt="Aurastar">
+        <div class="product-info">
+          <p>Crafted with a Diamond-packaging, designed to hold your coin securely while enhancing its brilliance.</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./GOLDCARDS IMAGES/lalitha.jpg" alt="Lalitha">
+        <div class="product-info">
+          <p>Designed for multiple coins, this card accommodates several pieces in a single elegant pack—ideal for gifting or collections.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Micro Labels Pvt Ltd. All rights reserved.
+  </footer>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    const overlay = document.querySelector('.overlay');
+
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+      overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', () => {
+      nav.classList.remove('open');
+      overlay.classList.remove('active');
+    });
+
+    // Modal Script
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const images = document.querySelectorAll(".product-card img");
+    const closeBtn = document.querySelector(".close");
+
+    images.forEach(img => {
+      img.addEventListener("click", () => {
+        modal.style.display = "block";
+        modalImg.src = img.src;
+      });
+    });
+
+    closeBtn.onclick = () => {
+      modal.style.display = "none";
+    };
+
+    modal.onclick = (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+</body>
+
+</html>

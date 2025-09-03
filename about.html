@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Micro Labels Pvt Ltd</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Reset and base styles */
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+      color: #333;
+      line-height: 1.6;
+      transition: all 0.3s ease;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      background: #fff;
+      padding: 15px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-container img {
+      height: 50px;
+      transition: 0.3s ease;
+    }
+
+    .company-name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #252222;
+      transition: 0.3s ease;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: rgb(232, 120, 64);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #252222;
+    }
+
+    main {
+      padding: 60px 5%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #252222;
+      margin-bottom: 20px;
+      font-size: 2rem;
+      transition: 0.3s ease;
+    }
+
+    p {
+      margin-bottom: 16px;
+      transition: 0.3s ease;
+    }
+
+    footer {
+      background: rgb(232, 120, 64);
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+    }
+
+    /* Fact Sheet styling */
+    .fact-sheet {
+      margin-top: 40px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 25px;
+      border-radius: 8px;
+    }
+
+    .fact-sheet h2 {
+      margin-bottom: 20px;
+      font-size: 1.6rem;
+      color: #252222;
+      text-align: center;
+    }
+
+    .fact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .fact-item {
+      background: #fff;
+      border: 1px solid #eee;
+      padding: 15px 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .fact-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .fact-item strong {
+      display: block;
+      font-size: 0.95rem;
+      color: rgb(232, 120, 64);
+      margin-bottom: 5px;
+    }
+
+    .fact-item span {
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    /* Collapsible sections */
+    details {
+      margin-top: 25px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 15px 20px;
+      background: #fafafa;
+      transition: 0.3s ease;
+    }
+
+    details[open] {
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    summary {
+      font-weight: 600;
+      cursor: pointer;
+      color: rgb(232, 120, 64);
+      font-size: 1rem;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details p,
+    details ul {
+      margin-top: 12px;
+      font-size: 0.95rem;
+    }
+
+    /* Responsive - Tablet */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        right: -250px;
+        height: 100%;
+        width: 250px;
+        background: #fff;
+        box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+        transition: right 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        padding-top: 80px;
+        z-index: 9;
+      }
+
+      nav.open {
+        right: 0;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 20px;
+        padding-left: 0;
+        margin: 0;
+      }
+
+      nav ul li {
+        text-align: center;
+      }
+
+      main {
+        padding: 50px 5%;
+      }
+    }
+
+    /* Ultra small screens (<480px) */
+    @media (max-width: 480px) {
+      header {
+        padding: 10px 3%;
+      }
+
+      .logo-container img {
+        height: 40px;
+      }
+
+      .company-name {
+        font-size: 1.2rem;
+      }
+
+      h1 {
+        font-size: 1.4rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+
+      nav {
+        width: 200px;
+      }
+    }
+
+    /* Overlay for mobile menu */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 8;
+      transition: opacity 0.3s ease;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="./logo.jpg" alt="Micro Labels Logo">
+      <span class="company-name">Micro Labels Pvt Ltd</span>
+    </div>
+    <i class="fas fa-bars menu-toggle"></i>
+    <nav>
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./Products.html">Products</a></li>
+        <li><a href="./Gallery.html">Gallery</a></li>
+        <li><a href="./Contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="overlay"></div>
+
+  <!-- Replace ONLY the <main> content in your existing code with the following -->
+<main>
+  <h1>About Us</h1>
+  <p><strong>Micro Labels Pvt Ltd</strong> is a premier manufacturing company based in Bangalore, India, specializing in the Screen Printing of <strong>Packing Cards for Precious Metals, Speedometer Dials, Decals, Overlays, Dash Board Appliques</strong> and <strong>Labels</strong>. With years of expertise, state-of-the-art machinery, and a skilled workforce, we pride ourselves on delivering precision and high-quality solutions to top clients across the world.</p>
+  <p>Located in the heart of Bangalore’s industrial area, our facility caters to a wide range of clients in the Gold Refiners & Minters and Automotive Sectors. We are committed to innovation, consistency, and meeting client-specific requirements with unparalleled service and professionalism.</p>
+
+  <!-- Fact Sheet Section -->
+  <div class="fact-sheet">
+    <h2>Fact Sheet</h2>
+    <div class="fact-grid">
+      <div class="fact-item"><strong>Company Name</strong><span>Micro Labels Pvt Ltd</span></div>
+      <div class="fact-item"><strong>Founded</strong><span>2011</span></div>
+      <div class="fact-item"><strong>CEO</strong><span>Purushothaman Govind</span></div>
+      <div class="fact-item"><strong>Registered Address</strong><span>No.4, Sy No 175, Yelachenahalli, Kanakapura Main Rd, Prathiba Industrial Estate, Kumaraswamy Layout, Bengaluru, Karnataka 560111, Karnataka, India</span></div>
+      <div class="fact-item"><strong>Total Employees</strong><span>170+ employees</span></div>
+      <div class="fact-item"><strong>Legal Status</strong><span>Limited Company</span></div>
+      <div class="fact-item"><strong>Standards & Certifications</strong><span>IATF 16949 : 2016 & ISO9001 : 2015 QMS</span></div>
+      <div class="fact-item"><strong>GST No</strong><span>29AAHCM0174H1ZE</span></div>
+      <div class="fact-item"><strong>CIN</strong><span>U21098KA2011PTC056976</span></div>
+      <div class="fact-item"><strong>IEC Code</strong><span>0711034656</span></div>
+      </div>
+  </div>
+
+  <!-- Additional Details -->
+  <details open>
+    <summary>Mission</summary>
+    <p>At Micro Labels Pvt. Ltd., our mission is to be a trusted partner to our customers by delivering superior-quality products including cluster dials, packing cards, speedometer dials, decals, overlays, dashboard appliqués, and labels. We are committed to ensuring timely delivery, competitive pricing, and uncompromising quality through rigorous testing and innovation. Our goal is to create lasting value and long-term relationships with every client we serve.</p>
+  </details>
+
+  <details>
+    <summary>Objectives</summary>
+    <ul>
+      <li>To serve our clients adequately through qualitative products with a global vision in mind</li>
+      <li>To achieve personal and professional goals by offering the most qualitative range in the industry</li>
+      <li>To maintain and sustain constant growth in the company with dedication</li>
+      <li>To offer appropriate solutions to customer issues successfully</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>Company USP</summary>
+    <ul>
+      <li>Experienced R&D Department</li>
+      <li>Large Production Capacity</li>
+      <li>Quality Measures / Testing Facilities</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>Trade & Market</summary>
+    <ul>
+      <li>Export Percentage: Up to 50%</li>
+      <li>Export Countries: UAE, South Korea, Germany, Egypt.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>Industries We Serve</summary>
+    <ul>
+      <li>Automobile Industries</li>
+      <li>Gold Minting & Refiners</li>
+      <li>Electrical & Electronic Industries</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>Our Team</summary>
+    <p>We have the support of efficient and well-qualified manpower — engineers, technicians, procurement agents, R&D staff, warehousing & packaging personnel, and other support staff. This helps us with both bulk production and timely delivery.</p>
+  </details>
+
+  <details>
+    <summary>Beliefs and Creed</summary>
+    <ul>
+      <li>Work with zeal, enthusiasm, interest, and high spirits</li>
+      <li>Help ourselves in the best possible manner to achieve our goals</li>
+      <li>Create a cordial and comfortable work environment</li>
+    </ul>
+  </details>
+</main>
+  <footer>
+    &copy; 2025 Micro Labels Pvt Ltd. All rights reserved.
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    const overlay = document.querySelector('.overlay');
+
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+      overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', () => {
+      nav.classList.remove('open');
+      overlay.classList.remove('active');
+    });
+  </script>
+</body>
+
+</html>

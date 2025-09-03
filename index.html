@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Micro Labels Pvt Ltd</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <style>
+    :root {
+      --primary-color: #252222;
+      --text-color: #333;
+      --bg-color: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    header {
+      background: var(--bg-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 5%;
+      box-shadow: 0 2px 5px rgba(159, 61, 61, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    header img {
+      height: 60px;
+      max-width: 100%;
+    }
+
+    .company-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: var(--primary-color);
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      background: url('GOLDCARDS IMAGES/front logo illumination 30.jpg') no-repeat center center;
+      background-size: contain; /* ✅ Full image always visible */
+      background-color: #ffffff;   /* ✅ Fills gaps with black (change if needed) */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      padding: 20px;
+      max-width: 900px;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-content p {
+      font-size: 1.3rem;
+      margin-bottom: 40px;
+      color: #f1f1f1;
+    }
+
+    .certifications {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .certifications img {
+      width: 120px;
+      height: auto;
+      filter: brightness(0.9);
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .certifications img:hover {
+      transform: scale(1.1);
+      filter: brightness(1.1);
+    }
+
+    footer {
+      background-color: #000;
+      padding: 30px 0;
+      color: white;
+      text-align: center;
+    }
+
+    .footer-links a {
+      margin: 0 20px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      color: white;
+    }
+
+    .bottom-footer {
+      background-color: rgb(232, 120, 64);
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .email-popup {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      z-index: 1000;
+      background: #0072c6;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 30px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .email-popup i {
+      font-size: 1.5rem;
+    }
+
+    .call-popup {
+      position: fixed;
+      bottom: 60px;
+      right: 10px;
+      z-index: 1000;
+      background: #28a745;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 30px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .call-popup i {
+      font-size: 1.5rem;
+    }
+
+    @media screen and (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
+
+      .certifications img {
+        width: 90px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="./logo.jpg" alt="Micro Labels Logo">
+      <span class="company-name">Micro Labels Pvt Ltd</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./Products.html">Products</a></li>
+        <li><a href="./Gallery.html">Gallery</a></li>
+        <li><a href="./Contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Precision Printing for Industrial Excellence</h1>
+      <p>Trusted solutions for Packing Cards, Dials, Labels & Industrial Printing</p>
+      <div class="certifications" data-aos="zoom-in" data-aos-delay="300">
+        <img src="GOLDCARDS IMAGES/make in india.jpg" alt="Make in India">
+        <img src="GOLDCARDS IMAGES/iatf.jpg" alt="IATF Certified">
+        <img src="GOLDCARDS IMAGES/iso.jpg" alt="ISO Certified">
+      </div>
+    </div>
+  </section>
+
+  <footer data-aos="fade-in">
+    <div class="footer-links">
+      <a href="Contact.html">Contact</a>
+    </div>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.linkedin.com/in/micro-labels-pvt-ltd-71b951381" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/microlabels.pvt.ltd?igsh=aDNhcXE5Z3B6YW5l&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
+
+  <div class="bottom-footer">
+    &copy; 2025 Micro Labels Pvt Ltd. All rights reserved.
+  </div>
+
+  <!-- Email Us Popup -->
+  <div class="email-popup" onclick="window.location.href='mailto:admin@microlabels.net'">
+    <i class="fas fa-envelope"></i> Email Us
+  </div>
+
+  <!-- Call Us Popup -->
+  <div class="call-popup" onclick="window.location.href='tel:+919743905285'">
+    <i class="fas fa-phone"></i> Call Us
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>

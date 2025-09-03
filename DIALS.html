@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Speedometer Dials - Micro Labels Pvt Ltd</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      background: #fff;
+      padding: 15px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-container img {
+      height: 50px;
+    }
+
+    .company-name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #252222;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: rgb(232, 120, 64);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #252222;
+    }
+
+    main {
+      padding: 60px 5%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #252222;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    p {
+      margin-bottom: 16px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    footer {
+      background: rgb(232, 120, 64);
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        right: -250px;
+        height: 100%;
+        width: 250px;
+        background: #fff;
+        box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+        transition: right 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        padding-top: 80px;
+        z-index: 9;
+      }
+
+      nav.open {
+        right: 0;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      nav ul li {
+        text-align: center;
+      }
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 8;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #bbb;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="./logo.jpg" alt="Micro Labels Logo" />
+      <span class="company-name">Micro Labels Pvt Ltd</span>
+    </div>
+    <i class="fas fa-bars menu-toggle"></i>
+    <nav>
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./Products.html">Products</a></li>
+        <li><a href="./Gallery.html">Gallery</a></li>
+        <li><a href="./Contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="overlay"></div>
+
+  <main>
+    <h1>Speedometer Dials</h1>
+    <p>We specialize in precision-crafted speedometer dials for two-wheelers, three-wheelers, and utility vehicles. Serving both domestic and international markets, our dials come in a variety of shapes including round, hexagonal, rectangular, and custom forms. Designed for clarity, durability, and performance, each dial is tailored to meet OEM specifications with a premium finish.</p>
+
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="./dials/eco.jpg" alt="eco Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/grey.jpg" alt="grey Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/hex.jpg" alt="hex Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/hexagon.jpg" alt="hexagon Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/connect.jpg" alt="connect Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/gear.jpg" alt="gear Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/green.jpg" alt="green Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/jupiter.jpg" alt="jupiter Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/mill.jpg" alt="mill Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/n.jpg" alt="n Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/ola.jpg" alt="ola Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/pgm fi 2.jpg" alt="pgm fi 2 Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/pgm fi.jpg" alt="pgm fi Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/pgm.jpg" alt="pgm Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/pieces.jpg" alt="pieces Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/power.jpg" alt="power Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/rec.jpg" alt="rec Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/tvs red.jpg" alt="TVS red Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/select.jpg" alt="select Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/semi.jpg" alt="semi Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/suprajit 2.jpg" alt="suprajit 2 Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/suprajit blue.jpg" alt="Suprajit blue Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/suprajit.jpg" alt="Suprajit Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/swaraj.jpg" alt="swaraj Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/threeeeeee.jpg" alt="Three Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/tvs mul.jpg" alt="mul Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/tvs grey.jpg" alt="grey Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/tvs white.jpg" alt="TVS White Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/tvs.jpg" alt="TVS Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/vst.jpg" alt="vst Dial" />
+      </div>
+      <div class="product-card">
+        <img src="./dials/disp.jpg" alt="disp Dial" />
+      </div>
+     </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Micro Labels Pvt Ltd. All rights reserved.
+  </footer>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImage" />
+  </div>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    const overlay = document.querySelector('.overlay');
+
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+      overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', () => {
+      nav.classList.remove('open');
+      overlay.classList.remove('active');
+    });
+
+    // Image Modal Logic
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const closeBtn = document.querySelector(".close");
+    const images = document.querySelectorAll(".product-card img");
+
+    images.forEach(img => {
+      img.addEventListener("click", () => {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+      });
+    });
+
+    closeBtn.onclick = () => {
+      modal.style.display = "none";
+    };
+
+    modal.onclick = (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+</body>
+
+</html>
